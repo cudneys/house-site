@@ -19,10 +19,35 @@
   var rooms = document.getElementById('rooms');
   var empty = document.getElementById('status-empty');
   var refreshBtn = document.getElementById('status-refresh');
+  var intervalSelect = document.getElementById('status-interval');
 
   if (!bar || !rooms || typeof window.ScottsHouseAPI !== 'function') return;
 
   var api = new window.ScottsHouseAPI();
+
+  // --- Auto-refresh: user-chosen interval, persisted in a cookie ---------
+  var COOKIE_NAME = 'sh_refresh_interval';
+  var COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // one year, in seconds
+  var DEFAULT_INTERVAL = '900000';         // 15 minutes
+  var timerId = null;
+
+  function readCookie(name) {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function writeCookie(name, value) {
+    document.cookie = name + '=' + encodeURIComponent(value) +
+      '; max-age=' + COOKIE_MAX_AGE + '; path=/; SameSite=Lax';
+  }
+
+  // (Re)arm the timer to match the current selection. A value of 0 ("Off")
+  // leaves only the manual Refresh button active.
+  function applyInterval() {
+    if (timerId !== null) { window.clearInterval(timerId); timerId = null; }
+    var ms = intervalSelect ? parseInt(intervalSelect.value, 10) : 0;
+    if (ms > 0) timerId = window.setInterval(load, ms);
+  }
 
   function setState(state, text) {
     bar.setAttribute('data-state', state);
@@ -255,6 +280,21 @@
     });
   }
 
+  // Restore the saved choice (falling back to the default if absent/invalid).
+  if (intervalSelect) {
+    var saved = readCookie(COOKIE_NAME);
+    var valid = Array.prototype.some.call(intervalSelect.options, function (o) {
+      return o.value === saved;
+    });
+    intervalSelect.value = valid ? saved : DEFAULT_INTERVAL;
+
+    intervalSelect.addEventListener('change', function () {
+      writeCookie(COOKIE_NAME, intervalSelect.value);
+      applyInterval();
+    });
+  }
+
   refreshBtn.addEventListener('click', load);
+  applyInterval();
   load();
 })();

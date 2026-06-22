@@ -22,7 +22,19 @@
     <div class="status-bar" id="api-status" data-state="loading">
       <span class="status-dot"></span>
       <span class="status-bar__text" id="api-status-text">Connecting to api.scotts.house&hellip;</span>
-      <button class="status-refresh" id="status-refresh" type="button" hidden>Refresh</button>
+      <div class="status-controls">
+        <label class="status-interval">
+          <span class="status-interval__label">Auto-refresh</span>
+          <select class="status-interval__select" id="status-interval">
+            <option value="0">Off</option>
+            <option value="300000">Every 5 minutes</option>
+            <option value="900000">Every 15 minutes</option>
+            <option value="1800000">Every 30 minutes</option>
+            <option value="3600000">Every hour</option>
+          </select>
+        </label>
+        <button class="status-refresh" id="status-refresh" type="button" hidden>Refresh</button>
+      </div>
     </div>
 
     <div class="rooms" id="rooms" hidden></div>

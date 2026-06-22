@@ -193,6 +193,7 @@ code {
 .status-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: .75rem;
   padding: .85rem 1.1rem;
   background: var(--surface);
@@ -211,8 +212,33 @@ code {
 .status-bar[data-state="online"]  .status-dot { background: var(--status-online); box-shadow: 0 0 0 4px rgba(22,163,74,.15); }
 .status-bar[data-state="offline"] .status-dot { background: var(--status-offline); box-shadow: 0 0 0 4px rgba(220,38,38,.12); }
 .status-bar__text { font-size: .9rem; color: var(--text-muted); font-weight: 500; }
-.status-refresh {
+.status-controls {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.status-interval {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.status-interval__select {
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: .3rem .5rem;
+  cursor: pointer;
+}
+.status-interval__select:hover { border-color: var(--accent); }
+.status-refresh {
   font: inherit;
   font-size: .8rem;
   font-weight: 600;
