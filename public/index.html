@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.159.2">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scotts.house</title>
+<meta name="description" content="Live status from our home — a read-only window into the smart house.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <a class="site-logo" href="/">
+      <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6 17L18 6l12 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 15v13h18V15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 28v-7h6v7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      <span class="logo-text">scotts.house</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/" class="active">Home</a>
+      <a href="#status">Status</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="site-main">
+    
+
+
+<section class="hero">
+  <div class="hero-glow hero-glow--1"></div>
+  <div class="hero-glow hero-glow--2"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">scotts.house</div>
+    <h1 class="hero-title">
+      A read-only window
+      <em>into our home.</em>
+    </h1>
+    <p class="hero-sub">Live status from our home — a read-only window into the smart house.</p>
+  </div>
+</section>
+
+
+<section class="section" id="status">
+  <div class="container">
+    <div class="section-label">Live</div>
+    <h2 class="section-title">Home status, room by room</h2>
+
+    <div class="status-bar" id="api-status" data-state="loading">
+      <span class="status-dot"></span>
+      <span class="status-bar__text" id="api-status-text">Connecting to api.scotts.house&hellip;</span>
+      <button class="status-refresh" id="status-refresh" type="button" hidden>Refresh</button>
+    </div>
+
+    <div class="rooms" id="rooms" hidden></div>
+
+    <p class="status-empty" id="status-empty" hidden>
+      No status to show yet. Once <code>api.scotts.house</code> is reachable from the
+      browser, each room and its entities will appear here.
+    </p>
+  </div>
+</section>
+
+
+<script src="/js/ha-api.js"></script>
+<script>
+  window.SCOTTS_HOUSE_API_BASE = "https://api.scotts.house";
+</script>
+<script src="/js/status-widget.js"></script>
+
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="site-logo site-logo--footer" href="/">
+        <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6 17L18 6l12 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 15v13h18V15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 28v-7h6v7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        <span>scotts.house</span>
+      </a>
+      <nav class="footer-links">
+        <a href="/">Home</a>
+        <a href="#status">Status</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">&copy; 2026 scotts.house</p>
+  </div>
+</footer>
+
+</body>
+</html>
