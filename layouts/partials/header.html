@@ -5,8 +5,11 @@
       <span class="logo-text">{{ .Site.Title }}</span>
     </a>
     <nav class="site-nav">
-      <a href="{{ "/" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>Home</a>
       <a href="#status">Status</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="https://cudneys.net/" class="nav-external">Home</a>
+      <a href="https://cookbook.this-old.dad/" class="nav-external">Cookbook</a>
+      <a href="https://dogs.this-old.dad/" class="nav-external">Dogs</a>
     </nav>
   </div>
 </header>

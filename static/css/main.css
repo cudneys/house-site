@@ -113,6 +113,15 @@ code {
 .site-nav a:hover { color: var(--text); background: var(--surface-tinted); }
 .site-nav a.active { color: var(--accent); }
 
+/* Divider before off-site (family) links */
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-strong);
+  margin: 0 .5rem;
+  flex-shrink: 0;
+}
+
 /* ── Main ── */
 .site-main { flex: 1; }
 
