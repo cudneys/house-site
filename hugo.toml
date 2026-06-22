@@ -1,0 +1,10 @@
+baseURL = 'https://scotts.house/'
+languageCode = 'en-us'
+title = "scotts.house"
+disableKinds = ['taxonomy', 'term', 'rss']
+
+[params]
+  description = "Live status from our home — a read-only window into the smart house."
+  author = "Scott"
+  # Base URL for the read-only Home Assistant API (Go app behind a Cloudflare Tunnel).
+  apiBaseURL = "https://api.scotts.house"

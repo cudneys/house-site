@@ -1,0 +1,45 @@
+{{ define "main" }}
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-glow hero-glow--1"></div>
+  <div class="hero-glow hero-glow--2"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">{{ .Site.Title }}</div>
+    <h1 class="hero-title">
+      A read-only window
+      <em>into our home.</em>
+    </h1>
+    <p class="hero-sub">{{ .Site.Params.description }}</p>
+  </div>
+</section>
+
+<!-- ── Live status ───────────────────────────────────────── -->
+<section class="section" id="status">
+  <div class="container">
+    <div class="section-label">Live</div>
+    <h2 class="section-title">Home status, room by room</h2>
+
+    <div class="status-bar" id="api-status" data-state="loading">
+      <span class="status-dot"></span>
+      <span class="status-bar__text" id="api-status-text">Connecting to api.scotts.house&hellip;</span>
+      <button class="status-refresh" id="status-refresh" type="button" hidden>Refresh</button>
+    </div>
+
+    <div class="rooms" id="rooms" hidden></div>
+
+    <p class="status-empty" id="status-empty" hidden>
+      No status to show yet. Once <code>api.scotts.house</code> is reachable from the
+      browser, each room and its entities will appear here.
+    </p>
+  </div>
+</section>
+
+<!-- API client + status widget. apiBaseURL is injected from hugo.toml. -->
+<script src="{{ "js/ha-api.js" | relURL }}"></script>
+<script>
+  window.SCOTTS_HOUSE_API_BASE = {{ .Site.Params.apiBaseURL }};
+</script>
+<script src="{{ "js/status-widget.js" | relURL }}"></script>
+
+{{ end }}

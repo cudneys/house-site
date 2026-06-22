@@ -1,0 +1,15 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="site-logo site-logo--footer" href="{{ "/" | relURL }}">
+        {{ partial "logo-mark.html" . }}
+        <span>{{ .Site.Title }}</span>
+      </a>
+      <nav class="footer-links">
+        <a href="{{ "/" | relURL }}">Home</a>
+        <a href="#status">Status</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">&copy; {{ now.Year }} {{ .Site.Title }}</p>
+  </div>
+</footer>
